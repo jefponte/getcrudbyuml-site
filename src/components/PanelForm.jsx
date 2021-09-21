@@ -9,13 +9,56 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-
+import WithLineNumbers from './WithLineNumbers';
+import theme from "prism-react-renderer/themes/nightOwl";
 const code = `
-{"id":148,"nome":"Store","objetos":[{"id":327,"nome":"Product","id_software_objetos":148,"atributos":[{"id":1305,"nome":"id","tipo":"Int","indice":"PRIMARY","id_objeto_atributos":327},{"id":1306,"nome":"description","tipo":"string","indice":"","id_objeto_atributos":327},{"id":1307,"nome":"price","tipo":"float","indice":"","id_objeto_atributos":327}]},{"id":328,"nome":"User","id_software_objetos":148,"atributos":[{"id":1302,"nome":"id","tipo":"Int","indice":"PRIMARY","id_objeto_atributos":328},{"id":1303,"nome":"name","tipo":"string","indice":"","id_objeto_atributos":328},{"id":1304,"nome":"email","tipo":"string","indice":"","id_objeto_atributos":328}]}]}
-
+{
+  "nome": "Store",
+  "objetos": [
+    {
+      "nome": "Product",
+      "atributos": [
+        {
+          "nome": "id",
+          "tipo": "Int",
+          "indice": "PRIMARY"
+        },
+        {
+          "nome": "description",
+          "tipo": "string",
+          "indice": ""
+        },
+        {
+          "nome": "price",
+          "tipo": "float",
+          "indice": ""
+        }
+      ]
+    },
+    {
+      "nome": "User",
+      "atributos": [
+        {
+          "nome": "id",
+          "tipo": "Int",
+          "indice": "PRIMARY"
+        },
+        {
+          "nome": "name",
+          "tipo": "string",
+          "indice": ""
+        },
+        {
+          "nome": "email",
+          "tipo": "string",
+          "indice": ""
+        }
+      ]
+    }
+  ]
+}
   `;
-  const sql = `Aqui vamos gerar o SQL
-OK?`;
+  const sql = `Clique no Botão para gerar o SQL`;
   
   const hightlightWithLineNumbers = (input, language) =>
     highlight(input, language)
@@ -67,6 +110,7 @@ OK?`;
 <Grid container spacing={2}>
   <Grid item xs={6}>
   <Editor
+  
         value={codeValue}
         onValueChange={code => setCodeValue(code)}
         highlight={code => hightlightWithLineNumbers(code, languages.js)}
@@ -85,21 +129,9 @@ OK?`;
     
     <Button variant="contained" color="secondary">Save Export</Button>
       */}
-      
-  <Editor
-        onBlur={testeDeBlur}
-        value={sqlValue}
-        onValueChange={sql => setSqlValue(sql)}
-        highlight={sql => hightlightWithLineNumbers(sql, languages.js)}
-        padding={10}
-        textareaId="sqlArea"
-        className="editor"
-        style={{
-          fontFamily: '"Fira code", "Fira Mono", monospace',
-          fontSize: 18,
-          outline: 0
-        }}
-      />
+      <WithLineNumbers codigo={sqlValue}/>
+
+  
       
   </Grid>
   
