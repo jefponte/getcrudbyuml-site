@@ -3,22 +3,6 @@ import { Pre, Line, LineNo, LineContent } from "../styles";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/palenight";
 
-const exampleCode = `
-import React, { useState } from "react";
-
-function Example() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-    </div>
-  );
-}
-`.trim();
 
 function WithLineNumbers(props){
     const codigo = props.codigo;

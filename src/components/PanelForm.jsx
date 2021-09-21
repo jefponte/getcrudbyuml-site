@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import WithLineNumbers from './WithLineNumbers';
-import theme from "prism-react-renderer/themes/nightOwl";
+
 const code = `
 {
   "nome": "Store",
@@ -65,10 +65,13 @@ const code = `
       .split("\n")
       .map((line, i) => `<span class='editorLineNumber'>${i + 1}</span>${line}`)
       .join("\n");
+
+ 
   
   function PanelForm() {
     const [codeValue, setCodeValue] = useState(code);
     const [sqlValue, setSqlValue] = useState(sql);
+    const [dataCode, setDataCode] = useState();
 
     function testeDeBlur(){
 
@@ -83,7 +86,8 @@ const code = `
             })
             .then((response) => response.json())
             .then((data) => {
-                console.log("Success:", data);
+                //console.log("Success:", data);
+                setDataCode(data);
                 setSqlValue(data['files']['database_sqlite.sql']);
             })
             .catch((error) => {
@@ -93,6 +97,8 @@ const code = `
     }
     return (
         <>
+        {console.log(dataCode)}
+        
 <Container disableGutters maxWidth="lg" component="main" sx={{ pt: 5, pb: 6 }}>
         <Typography
           component="h1"
@@ -129,7 +135,45 @@ const code = `
     
     <Button variant="contained" color="secondary">Save Export</Button>
       */}
-      <WithLineNumbers codigo={sqlValue}/>
+      {dataCode === undefined ? <p>Clique no botão para gerar o codigo</p> : 
+      <>
+        <Typography
+          component="h2"
+          variant="h5"
+          align="center"
+          color="text.primary"
+          gutterBottom
+        >
+          CREATE Sqlite
+         
+        </Typography>
+        <WithLineNumbers codigo={dataCode.files.database_sqlite}/>
+        <Typography
+          component="h2"
+          variant="h5"
+          align="center"
+          color="text.primary"
+          gutterBottom
+        >
+          CREATE PostgreSQL
+         
+        </Typography>
+        <WithLineNumbers codigo={dataCode.files.database_pg}/>
+        <Typography
+          component="h2"
+          variant="h5"
+          align="center"
+          color="text.primary"
+          gutterBottom
+        >
+          CREATE MySQL
+         
+        </Typography>
+        <WithLineNumbers codigo={dataCode.files.database_mysql}/>
+        
+      </>}
+      
+      
 
   
       
