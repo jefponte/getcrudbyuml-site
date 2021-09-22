@@ -77,7 +77,7 @@ const code = `
 
             const data = JSON.parse(codeValue);
 
-            fetch("http://localhost/getcrudbyuml/getcrudbyuml-core/src/api", {
+            fetch("https://core.getcrudbyuml.com/api", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
