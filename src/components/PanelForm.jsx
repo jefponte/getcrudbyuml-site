@@ -68,7 +68,7 @@ const code = `[
     function testeDeBlur(){
 
             const data = JSON.parse(codeValue);
-            const data2 = {name: "softwareTeste", objects: data};
+            const data2 = {nome: "softwareTeste", objects: data};
 
             fetch("http://localhost/getcrudbyuml/getcrudbyuml-core/src/api/software/", {
             method: "POST",
@@ -89,6 +89,7 @@ const code = `[
     }
     return (
         <>
+        {console.log(dataCode)}
 <Container disableGutters maxWidth="lg" component="main" sx={{ pt: 5, pb: 6 }}>
         <Typography
           component="h1"
@@ -160,6 +161,17 @@ const code = `[
          
         </Typography>
         <WithLineNumbers codigo={dataCode.files.database_mysql}/>
+        <Typography
+          component="h2"
+          variant="h5"
+          align="center"
+          color="text.primary"
+          gutterBottom
+        >
+          SELECT
+         
+        </Typography>
+        <WithLineNumbers codigo={dataCode.files.dml}/>
         
       </>}
       
