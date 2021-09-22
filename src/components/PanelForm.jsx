@@ -11,54 +11,46 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import WithLineNumbers from './WithLineNumbers';
 
-const code = `
-{
-  "nome": "Store",
-  "objetos": [
-    {
-      "nome": "Product",
-      "atributos": [
-        {
-          "nome": "id",
-          "tipo": "Int",
-          "indice": "PRIMARY"
-        },
-        {
-          "nome": "description",
-          "tipo": "string",
-          "indice": ""
-        },
-        {
-          "nome": "price",
-          "tipo": "float",
-          "indice": ""
-        }
-      ]
-    },
-    {
-      "nome": "User",
-      "atributos": [
-        {
-          "nome": "id",
-          "tipo": "Int",
-          "indice": "PRIMARY"
-        },
-        {
-          "nome": "name",
-          "tipo": "string",
-          "indice": ""
-        },
-        {
-          "nome": "email",
-          "tipo": "string",
-          "indice": ""
-        }
-      ]
-    }
-  ]
-}
+const code = `[
+  {
+    "name": "Product",
+    "attributes": [
+      {
+        "name": "id",
+        "type": "Int",
+        "index": "PRIMARY"
+      },
+      {
+        "name": "description",
+        "type": "string"
+      },
+      {
+        "name": "price",
+        "type": "float"
+      }
+    ]
+  },
+  {
+    "name": "User",
+    "attributes": [
+      {
+        "name": "id",
+        "type": "Int",
+        "index": "PRIMARY"
+      },
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "email",
+        "type": "string"
+      }
+    ]
+  }
+]
   `;
-  const sql = `Clique no Botão para gerar o SQL`;
+  
   
   const hightlightWithLineNumbers = (input, language) =>
     highlight(input, language)
@@ -70,25 +62,25 @@ const code = `
   
   function PanelForm() {
     const [codeValue, setCodeValue] = useState(code);
-    const [sqlValue, setSqlValue] = useState(sql);
+    
     const [dataCode, setDataCode] = useState();
 
     function testeDeBlur(){
 
             const data = JSON.parse(codeValue);
+            const data2 = {name: "softwareTeste", objects: data};
 
-            fetch("https://core.getcrudbyuml.com/api", {
+            fetch("http://localhost/getcrudbyuml/getcrudbyuml-core/src/api/software/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(data2),
             })
             .then((response) => response.json())
             .then((data) => {
-                //console.log("Success:", data);
+                
                 setDataCode(data);
-                setSqlValue(data['files']['database_sqlite.sql']);
             })
             .catch((error) => {
                 console.error("Error:", error);
@@ -97,8 +89,6 @@ const code = `
     }
     return (
         <>
-        {console.log(dataCode)}
-        
 <Container disableGutters maxWidth="lg" component="main" sx={{ pt: 5, pb: 6 }}>
         <Typography
           component="h1"
@@ -114,7 +104,7 @@ const code = `
   
 
 <Grid container spacing={2}>
-  <Grid item xs={6}>
+  <Grid item md={6} sm={12} xs={12}>
   <Editor
   
         value={codeValue}
@@ -130,7 +120,7 @@ const code = `
         }}
       />
   </Grid>
-  <Grid item xs={6}>
+  <Grid item md={6} sm={12}  xs={12}>
     {/*<Button variant="contained">Add Class</Button> 
     
     <Button variant="contained" color="secondary">Save Export</Button>
