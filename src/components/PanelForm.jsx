@@ -70,7 +70,7 @@ const code = `[
             const data = JSON.parse(codeValue);
             const data2 = {nome: "softwareTeste", objects: data};
 
-            fetch("http://localhost/getcrudbyuml/getcrudbyuml-core/src/api/software/", {
+            fetch("https://core.getcrudbyuml.com/api/software", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -101,7 +101,9 @@ const code = `[
           ExempleSoftware
          
         </Typography>
-         <Button variant="contained" onClick={testeDeBlur} color="success">Get Code</Button> <br/> <br/>
+        <Button variant="contained">Add Class</Button> 
+        <Button variant="contained" color="secondary">Diagram</Button>
+        <Button variant="contained" onClick={testeDeBlur} color="success">Get Code</Button> <br/> <br/>
   
 
 <Grid container spacing={2}>
@@ -122,9 +124,7 @@ const code = `[
       />
   </Grid>
   <Grid item md={6} sm={12}  xs={12}>
-    {/*<Button variant="contained">Add Class</Button> 
-    
-    <Button variant="contained" color="secondary">Save Export</Button>
+    {/*
       */}
       {dataCode === undefined ? <p>Clique no botão para gerar o codigo</p> : 
       <>
