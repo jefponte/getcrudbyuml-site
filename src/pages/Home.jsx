@@ -7,6 +7,7 @@ import Link from '@mui/material/Link';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import PanelForm from '../components/PanelForm';
 import TopBar from '../components/TopBar';
+import PanelDraw from '../components/PanelDraw';
 
 
 function Copyright(props) {
@@ -28,9 +29,10 @@ function Home() {
       <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
       <CssBaseline />
       <TopBar/>
+     
       <PanelForm/>
-        
-
+    
+      <PanelDraw/>
 
       
                 
