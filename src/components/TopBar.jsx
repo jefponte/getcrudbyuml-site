@@ -28,7 +28,7 @@ function TopBar(){
               href="#"
               sx={{ my: 1, mx: 1.5 }}
             >
-              Features
+              Demos
             </Link>
             <Link
               variant="button"
@@ -36,7 +36,7 @@ function TopBar(){
               href="#"
               sx={{ my: 1, mx: 1.5 }}
             >
-              Enterprise
+              Documentation
             </Link>
             <Link
               variant="button"
@@ -44,7 +44,7 @@ function TopBar(){
               href="#"
               sx={{ my: 1, mx: 1.5 }}
             >
-              Support
+              View On Github
             </Link>
           </nav>
           <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
