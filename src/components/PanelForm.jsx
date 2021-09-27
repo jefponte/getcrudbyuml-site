@@ -90,7 +90,7 @@ const code = `[
     return (
         <>
         {console.log(dataCode)}
-<Container disableGutters maxWidth="lg" component="main" sx={{ pt: 5, pb: 6 }}>
+<Container disableGutters maxWidth="lg" component="main" sx={{ pl: 7, pr: 7, pt: 5, pb: 6 }}>
         <Typography
           component="h1"
           variant="h5"
